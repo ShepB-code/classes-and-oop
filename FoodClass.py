@@ -1,3 +1,7 @@
+# Author:     Shepard Berry
+# Class:      MIS-4322
+# Assignment: Classes and OOP
+# Due:        2/20/2023
 
 class Customer:
     def __init__(self, customerid=0, name="", address="", email="", phone="", member_status=False):
