@@ -27,15 +27,16 @@ customer = fc.Customer(customerid=569, name="Aubree Himsworth", address="1172 Mo
 print(f'Customer Name: {customer.get_name()}')
 print(f'Phone: {customer.get_phone()}')
 
+transactions = [fc.Transaction(date=v[0], item_name=v[1], cost=v[2], customerid=v[3]) for v in dict.values()]
 # get order total/print out items
 discount = 0.0
-for v in dict.values():
+for tran in transactions:
     # make sure transaction matches customerid
-    if v[3] == customer.get_customerid():
-        print(f'Order Item: {v[1]} Price: ${v[2]:,.2f}')
-        order_total += v[2]
+    if tran.get_customerid() == customer.get_customerid():
+        print(f'Order Item: {tran.get_item_name()} Price: ${tran.get_cost():,.2f}')
+        order_total += tran.get_cost()
         if customer.get_member_status():
-            discount += v[2] * 0.2
+            discount += tran.get_cost() * 0.2
 
 print(f'Total Cost: ${order_total:,.2f}')
 
